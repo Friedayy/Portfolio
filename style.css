@@ -164,6 +164,9 @@ nav{
     width: 50%;
     padding-left: 20px;
 }
+.featured-text-btn a{
+    text-decoration: none;
+}
 .featured-text-card span{
     background: var(--third-color);
     color: var(--color-white);
@@ -742,4 +745,10 @@ footer{
         height: 250px;
     }
 
+}
+@media only screen and (max-width: 450px){
+    .bottom-footer p{
+        font-size: 12px;
+        text-align: center; 
+    }  
 }
