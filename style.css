@@ -17,6 +17,123 @@
     --first-shadow-color:rgba(0, 0, 0, 0.1);
 }
 
+/* ==================== DARK MODE ==================== */
+
+body.dark-mode {
+    --body-color: rgb(18, 18, 28);
+    --color-white: rgb(30, 30, 45);
+    --text-color-second: rgb(220, 220, 230);
+    --text-color-third: rgb(0, 210, 225);
+    --first-shadow-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--body-color);
+    background-image:
+        radial-gradient(ellipse at 60% 40%, rgba(110, 87, 224, 0.25), transparent 70%),
+        radial-gradient(ellipse at 20% 80%, rgba(0, 210, 225, 0.15), transparent 60%);
+    background-attachment: fixed;
+}
+
+body.dark-mode nav {
+    background: rgb(18, 18, 28);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+body.dark-mode .nav-menu {
+    background: rgba(18, 18, 28, 0.95);
+}
+
+/* Mobile nav menu dark mode background */
+body.dark-mode .nav-menu.responsive,
+body.dark-mode .nav-menu[style] {
+    background: rgba(18, 18, 28, 0.97);
+}
+
+body.dark-mode .scroll-btn {
+    background: rgb(30, 30, 45);
+    color: rgb(220, 220, 230);
+}
+
+body.dark-mode .btn {
+    background: rgb(40, 40, 60);
+    color: rgb(220, 220, 230);
+}
+
+body.dark-mode .btn:hover {
+    background: var(--second-color);
+    color: #fff;
+}
+
+body.dark-mode footer {
+    --footer-color: rgb(14, 14, 22);
+}
+
+body.dark-mode .top-footer p,
+body.dark-mode .bottom-footer p,
+body.dark-mode .bottom-footer a {
+    color: rgb(200, 200, 215);
+}
+
+body.dark-mode .footer_menu_list a {
+    color: rgb(200, 200, 215);
+}
+
+body.dark-mode .footer_menu_list a:hover {
+    color: var(--second-color);
+}
+
+body.dark-mode .nav-link {
+    color: rgb(200, 200, 215);
+}
+
+body.dark-mode .nav-menu-btn i {
+    color: rgb(200, 200, 215);
+}
+
+body.dark-mode .icon {
+    background: rgb(40, 40, 60);
+    color: rgb(200, 200, 215);
+}
+
+
+body.dark-mode .skills-list span {
+    background: var(--first-color);
+}
+
+body.dark-mode .contact-card {
+    background: rgb(30, 30, 45);
+}
+
+body.dark-mode .contact-card h3,
+body.dark-mode .contact-card p {
+    color: rgb(220, 220, 230);
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #efefef;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 20px;
+    color: var(--text-color-second);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.dark-mode-btn:hover {
+    background: var(--second-color);
+    color: #fff;
+}
+
+body.dark-mode .dark-mode-btn {
+    background: rgb(40, 40, 60);
+    color: rgb(220, 220, 230);
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -68,8 +185,47 @@ html {
 .i{
     font-size: 16px;
 }
+/* ==================== BLOBS ==================== */
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
+    transition: background 0.5s ease;
+}
+
+.blob-1 {
+    width: 550px;
+    height: 550px;
+    background: rgba(110, 87, 224, 0.2);
+    top: -150px;
+    right: -100px;
+}
+
+.blob-2 {
+    width: 450px;
+    height: 450px;
+    background: rgba(0, 210, 225, 0.15);
+    bottom: -150px;
+    left: -100px;
+}
+
+body.dark-mode .blob-1 {
+    background: rgba(110, 87, 224, 0.35);
+}
+
+body.dark-mode .blob-2 {
+    background: rgba(0, 210, 225, 0.2);
+}
+
 body{
-    background: var(--body-color);
+    background-color: var(--body-color);
+    background-image:
+        radial-gradient(ellipse at 60% 40%, rgba(110, 87, 224, 0.15), transparent 70%),
+        radial-gradient(ellipse at 20% 80%, rgba(0, 210, 225, 0.1), transparent 60%);
+    background-attachment: fixed;
 }
 .container{
     width: 100%;
@@ -400,6 +556,9 @@ h3{
 .project-box label{
     font-size: 12px;
     color: #777;
+    text-align: center;
+    padding: 0 15px;
+    line-height: 1.6;
 }
 .project-box::after{
     content: "";
@@ -589,7 +748,7 @@ footer{
     align-items: center;
     flex-direction: column;
     row-gap: 30px;
-    background: #f8f8f8;
+    background: var(--footer-color, #f8f8f8);
     padding-block: 40px 60px;
 }
 .top-footer p{
@@ -723,6 +882,22 @@ footer{
         min-height: 150px;
     }
 
+    /* Dark mode button — keep visible and aligned on mobile */
+    .dark-mode-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 17px;
+    }
+
+    /* Skills boxes stack vertically on mobile */
+    .col {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skills-box {
+        width: 100%;
+    }
 
 }
 

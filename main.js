@@ -1,3 +1,33 @@
+// ==================== DARK MODE ====================
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const icon = document.getElementById('darkModeIcon');
+    if (document.body.classList.contains('dark-mode')) {
+        icon.classList.replace('uil-moon', 'uil-sun');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        icon.classList.replace('uil-sun', 'uil-moon');
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+// Default: dark mode unless user explicitly chose light
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+    document.body.classList.remove('dark-mode');
+    document.getElementById('darkModeIcon').classList.replace('uil-sun', 'uil-moon');
+}
+
+// ==================== BLOB PARALLAX ====================
+const blob1 = document.querySelector('.blob-1');
+const blob2 = document.querySelector('.blob-2');
+
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    blob1.style.transform = `translateY(${scrollY * 0.25}px) translateX(${scrollY * 0.05}px)`;
+    blob2.style.transform = `translateY(${-scrollY * 0.2}px) translateX(${-scrollY * 0.05}px)`;
+});
+
 function myMenuFunction(){
     var menuBtn = document.getElementById("myNavMenu");
 
