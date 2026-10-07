@@ -84,6 +84,7 @@ portfolio/
 ├── images/             # Profile avatar, logo & media assets
 │   ├── favicon.svg     # Stylized vector 'a.' brand favicon
 │   ├── favicon.png     # High-resolution brand icon
+│   ├── og-preview.png  # 1200x630 Open Graph & Twitter share banner
 │   ├── logo.jpg
 │   └── me.jpeg
 └── README.md           # Project documentation
