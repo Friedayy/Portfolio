@@ -38,26 +38,64 @@ function myMenuFunction(){
     }
 }
 
-  window.onscroll = function() {headerShadow()};
-
-    function headerShadow(){
-        const navHeader = document.getElementById("header");
-
-        if(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50){
-            navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
-            navHeader.style.height = "70px";
-            navHeader.style.lineHeight = "70px";
-        } else {
-            navHeader.style.boxShadow = "none";
-            navHeader.style.height = "90px";
-            navHeader.style.lineHeight = "90px";
-        }
+// ==================== SCROLL PROGRESS & BACK TO TOP ====================
+function updateScrollFeatures() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progressPercent = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+    
+    // Update top progress bar
+    const progressBar = document.getElementById('scrollProgressBar');
+    if (progressBar) {
+        progressBar.style.width = progressPercent + '%';
     }
 
-const expenseTracker = document.querySelector(".project-box");
+    // Toggle back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        if (scrollY > 350) {
+            backToTopBtn.classList.add('show-back-to-top');
+        } else {
+            backToTopBtn.classList.remove('show-back-to-top');
+        }
+    }
+}
 
-expenseTracker.addEventListener("click", () => {
-    window.open("https://github.com/Friedayy/Expense-tracker-ledger.git", "_blank");
+function headerShadow(){
+    const navHeader = document.getElementById("header");
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+    if(scrollY > 50){
+        navHeader.classList.add("header-scrolled");
+    } else {
+        navHeader.classList.remove("header-scrolled");
+    }
+}
+
+window.addEventListener('scroll', () => {
+    headerShadow();
+    updateScrollFeatures();
+});
+
+// ==================== PROJECT CARDS ====================
+const projectBoxes = document.querySelectorAll(".project-box[data-url]");
+
+projectBoxes.forEach(box => {
+    const openProject = () => {
+        const url = box.getAttribute("data-url");
+        if (url) {
+            window.open(url, "_blank", "noopener,noreferrer");
+        }
+    };
+
+    box.addEventListener("click", openProject);
+
+    box.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openProject();
+        }
+    });
 });
 
 var typingEffect = new Typed(".typedText",{
@@ -75,12 +113,15 @@ const sr = ScrollReveal({
     reset: true
 })
 
-sr.reveal('.featured-text-card',{})
+sr.reveal('.status-badge',{})
+sr.reveal('.featured-text-card',{delay:50})
 sr.reveal('.featured-name',{delay:100})
-sr.reveal('.featured-text-info',{delay:200})
+sr.reveal('.featured-text-info',{delay:150})
 sr.reveal('.featured-text-btn',{delay:200})
-sr.reveal('.social_icons',{delay:200})
+sr.reveal('.hero-stats',{delay:250})
+sr.reveal('.social_icons',{delay:300})
 sr.reveal('.featured-image',{delay:300})
+sr.reveal('.floating-badge',{delay:400, interval: 150})
 sr.reveal('.project-box',{interval: 200})
 sr.reveal('.top-header',{})
 

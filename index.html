@@ -10,6 +10,7 @@
 
 </head>
 <body class="dark-mode">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="container">
@@ -56,6 +57,10 @@
         <main class="wrapper">
             <section class="featured-box" id="home">
                 <div class="featured-text">
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Available for Opportunities</span>
+                    </div>
                     <div class="featured-text-card">
                         <span>Mohammad Amaan Bhat</span>
                     </div>
@@ -63,13 +68,29 @@
                         I'm <span class="typedText">Developer</span>
                     </div>
                     <div class="featured-text-info">
-                        <p>Experienced Full Stack Developer with a  passion for creating visually stunning and user-friendly websites.</p>
+                        <p>Experienced Full Stack Developer with a passion for creating visually stunning and user-friendly websites.</p>
                     </div>
                     <div class="featured-text-btn">
                         <a href="#contact" class="btn blue-btn">Hire Me</a>
                         <a href="https://drive.google.com/file/d/1FuFrUILh1HFzxJORaU8HPZJmkfM0q5oJ/view?usp=sharing" target="_blank">
                             <button class="btn">Download Resume <i class="uil uil-file-alt"></i></button>
                         </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">2+</span>
+                            <span class="stat-label">Years Exp.</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Committed</span>
+                        </div>
                     </div>
                     <div class="social_icons">
 
@@ -100,8 +121,19 @@
                     </div>
                 </div>
                 <div class="featured-image">
-                    <div class="image">
-                        <img src="images/me.jpeg" alt="avatar" >
+                    <div class="image-wrapper">
+                        <div class="image-glow"></div>
+                        <div class="image">
+                            <img src="images/me.jpeg" alt="Mohammad Amaan Bhat" >
+                        </div>
+                        <div class="floating-badge badge-top">
+                            <i class="uil uil-brackets-curly"></i>
+                            <span>Full Stack</span>
+                        </div>
+                        <div class="floating-badge badge-bottom">
+                            <i class="uil uil-check-circle"></i>
+                            <span>Open to Work</span>
+                        </div>
                     </div>  
                 </div>
                 <div class="scroll-icon-box">
@@ -164,20 +196,23 @@
                     <h1>Projects</h1>
                 </div>
                 <div class="project-container">
-                    <div class="project-box">
+                    <div class="project-box" data-url="https://github.com/Friedayy/Expense-tracker-ledger.git" role="button" tabindex="0" title="View Ledger on GitHub">
+                        <i class="uil uil-arrow-up-right project-link-icon"></i>
                         <i class="uil uil-briefcase-alt"></i>
                         <h3>Ledger</h3>
                         <label>💰 Track total balance, income, and expenses</label>
                     </div>
-                     <div class="project-box" onclick="window.open('https://github.com/Friedayy/ecommerce-platform', '_blank')" style="cursor: pointer;">
+                    <div class="project-box" data-url="https://github.com/Friedayy/ecommerce-platform" role="button" tabindex="0" title="View ShopHub on GitHub">
+                        <i class="uil uil-arrow-up-right project-link-icon"></i>
                         <i class="uil uil-shopping-cart"></i>
                         <h3>ShopHub</h3>
-                        <label>🛒 A full-featured e-commerce platform with product listings, cart, and checkout</label>
+                        <label>🛒 Full-featured e-commerce platform with cart & checkout</label>
                     </div>
-                    <div class="project-box">
-                        <i class="uil uil-award"></i>
-                        <h3>Experience</h3>
-                        <label>2+ Years of Development</label>
+                    <div class="project-box" data-url="https://github.com/Friedayy/react-projects" role="button" tabindex="0" title="View React Apps on GitHub">
+                        <i class="uil uil-arrow-up-right project-link-icon"></i>
+                        <i class="uil uil-react"></i>
+                        <h3>React Apps</h3>
+                        <label>⚡ Modern frontend applications & interactive UI components</label>
                     </div>
                 </div>
             </section>
@@ -300,6 +335,11 @@
             </div>
         </footer>
     </div>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop" title="Back to top">
+        <i class="uil uil-arrow-up"></i>
+    </a>
 
     <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
