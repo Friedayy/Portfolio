@@ -82,6 +82,8 @@ portfolio/
 ├── style.css           # Global stylesheets, themes, animations & media queries
 ├── main.js             # Client logic, theme persistence, scroll features & animations
 ├── images/             # Profile avatar, logo & media assets
+│   ├── favicon.svg     # Stylized vector 'a.' brand favicon
+│   ├── favicon.png     # High-resolution brand icon
 │   ├── logo.jpg
 │   └── me.jpeg
 └── README.md           # Project documentation
