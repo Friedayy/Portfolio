@@ -7,7 +7,7 @@
     "dev": "vite",
     "server": "node server.js",
     "dev:all": "node server.js & vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prepare-pages.js",
     "preview": "vite preview"
   },
   "dependencies": {
