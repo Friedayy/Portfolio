@@ -72,34 +72,62 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
   };
 
   // Fetch live GitHub data strictly for repo count, stars, languages, friends, and commit events
-  const fetchGitHubData = async () => {
+  const fetchGitHubData = async (forceRefresh = false) => {
     setIsLoading(true);
     try {
-      const [userRes, eventsRes, reposRes] = await Promise.allSettled([
+      const cacheKey = 'gh_telemetry_cache_v2';
+      if (!forceRefresh) {
+        try {
+          const cached = sessionStorage.getItem(cacheKey);
+          if (cached) {
+            const { data, timestamp } = JSON.parse(cached);
+            // 5 minute cache to protect GitHub API rate limit (60 req/hr)
+            if (Date.now() - timestamp < 5 * 60 * 1000) {
+              if (data.profile) setProfile(data.profile);
+              if (data.events && data.events.length > 0) setEvents(data.events);
+              if (data.languages && data.languages.length > 0) setLanguages(data.languages);
+              if (data.totalStars) setTotalStars(data.totalStars);
+              setIsApiLive(true);
+              setLastRefreshed('Just now (synced)');
+              setIsLoading(false);
+              return;
+            }
+          }
+        } catch {
+          // Ignore cache read errors
+        }
+      }
+
+      const [userRes, reposRes] = await Promise.allSettled([
         fetch('https://api.github.com/users/Friedayy'),
-        fetch('https://api.github.com/users/Friedayy/events'),
-        fetch('https://api.github.com/users/Friedayy/repos?sort=pushed&per_page=30')
+        fetch('https://api.github.com/users/Friedayy/repos?sort=pushed&per_page=15')
       ]);
 
       let liveSuccess = false;
+      let newProfile = profile;
+      let newLanguages = languages;
+      let newStars = totalStars;
+      let newEvents = events;
 
       if (userRes.status === 'fulfilled' && userRes.value.ok) {
         const userData = await userRes.value.json();
-        setProfile((prev) => ({
-          ...prev,
-          name: userData.name || prev.name,
-          login: userData.login || prev.login,
-          avatar_url: userData.avatar_url || prev.avatar_url,
-          bio: userData.bio || prev.bio,
-          public_repos: userData.public_repos ?? prev.public_repos,
-          followers: userData.followers ?? prev.followers,
-          following: userData.following ?? prev.following,
-          html_url: userData.html_url || prev.html_url
-        }));
+        newProfile = {
+          ...profile,
+          name: userData.name || profile.name,
+          login: userData.login || profile.login,
+          avatar_url: userData.avatar_url || profile.avatar_url,
+          avatar_svg: '/images/profile-avatar.svg',
+          bio: userData.bio || profile.bio,
+          public_repos: userData.public_repos ?? profile.public_repos,
+          followers: userData.followers ?? profile.followers,
+          following: userData.following ?? profile.following,
+          html_url: userData.html_url || profile.html_url
+        };
+        setProfile(newProfile);
         liveSuccess = true;
       }
 
-      // Process recent repos to calculate live language breakdown and overall stars
+      // Process recent repos to calculate live language breakdown, stars, and real commit progress
       if (reposRes.status === 'fulfilled' && reposRes.value.ok) {
         const reposData = await reposRes.value.json();
         if (Array.isArray(reposData) && reposData.length > 0) {
@@ -119,6 +147,7 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
           });
 
           if (calculatedStars > 0) {
+            newStars = calculatedStars;
             setTotalStars(calculatedStars);
           }
 
@@ -135,53 +164,51 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
               });
 
             if (sortedLangs.length > 0) {
+              newLanguages = sortedLangs;
               setLanguages(sortedLangs);
               liveSuccess = true;
             }
           }
-        }
-      }
 
-      if (eventsRes.status === 'fulfilled' && eventsRes.value.ok) {
-        const eventsData = await eventsRes.value.json();
-        if (Array.isArray(eventsData) && eventsData.length > 0) {
-          const parsedEvents = eventsData
-            .filter((e) => ['PushEvent', 'CreateEvent'].includes(e.type))
-            .slice(0, 8)
-            .map((e) => {
-              let commitMsg = 'Code update pushed to repository';
-              let commitSha = '';
-              let branch = '';
-
-              if (e.payload) {
-                if (e.payload.ref) {
-                  branch = e.payload.ref.replace('refs/heads/', '');
-                }
-                if (e.payload.head) {
-                  commitSha = e.payload.head.substring(0, 7);
-                }
-                if (e.payload.commits && e.payload.commits.length > 0) {
-                  commitMsg = e.payload.commits[0].message;
-                } else if (e.type === 'CreateEvent') {
-                  commitMsg = `Created ${e.payload.ref_type || 'repository'} ${e.payload.ref || ''}`;
-                }
-              }
-
-              return {
-                id: e.id,
+          // Fetch real commits from top active recently pushed repositories (e.g. Portfolio, solar-flare)
+          const topRepos = reposData.slice(0, 3);
+          const commitFetches = topRepos.map(async (repo) => {
+            try {
+              const cRes = await fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=5`);
+              if (!cRes.ok) return [];
+              const cData = await cRes.json();
+              if (!Array.isArray(cData)) return [];
+              return cData.map((c) => ({
+                id: c.sha,
                 repo: {
-                  name: e.repo?.name || 'Friedayy/repository',
-                  url: `https://github.com/${e.repo?.name || 'Friedayy'}`
+                  name: repo.full_name,
+                  url: repo.html_url
                 },
-                branch,
-                commitSha,
-                message: commitMsg,
-                time: getRelativeTime(e.created_at)
-              };
-            });
+                branch: repo.default_branch || 'main',
+                commitSha: c.sha ? c.sha.substring(0, 7) : '',
+                message: c.commit?.message ? c.commit.message.split('\n')[0] : 'Code update pushed to repository',
+                time: getRelativeTime(c.commit?.author?.date || c.commit?.committer?.date),
+                createdAt: c.commit?.author?.date || c.commit?.committer?.date,
+                url: c.html_url || `https://github.com/${repo.full_name}/commit/${c.sha}`
+              }));
+            } catch {
+              return [];
+            }
+          });
 
-          if (parsedEvents.length > 0) {
-            setEvents(parsedEvents);
+          const commitResults = await Promise.allSettled(commitFetches);
+          const collectedCommits = [];
+          commitResults.forEach((res) => {
+            if (res.status === 'fulfilled' && Array.isArray(res.value)) {
+              collectedCommits.push(...res.value);
+            }
+          });
+
+          if (collectedCommits.length > 0) {
+            // Sort by commit creation timestamp descending and display top 8
+            collectedCommits.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            newEvents = collectedCommits.slice(0, 8);
+            setEvents(newEvents);
             liveSuccess = true;
           }
         }
@@ -189,6 +216,25 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
 
       setIsApiLive(liveSuccess);
       setLastRefreshed('Just now');
+
+      if (liveSuccess) {
+        try {
+          sessionStorage.setItem(
+            cacheKey,
+            JSON.stringify({
+              data: {
+                profile: newProfile,
+                events: newEvents,
+                languages: newLanguages,
+                totalStars: newStars
+              },
+              timestamp: Date.now()
+            })
+          );
+        } catch {
+          // Ignore cache write errors
+        }
+      }
     } catch {
       setIsApiLive(false);
     } finally {
@@ -222,9 +268,9 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
 
           <button
             type="button"
-            onClick={fetchGitHubData}
+            onClick={() => fetchGitHubData(true)}
             className={`ongoing-sync-btn ${isLoading ? 'spinning' : ''}`}
-            title="Refresh latest GitHub data"
+            title="Force refresh latest GitHub data"
             disabled={isLoading}
           >
             <RefreshCw size={14} />
@@ -291,23 +337,33 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
           <div className="gh-profile-user-info enlarged">
             <div
               className="gh-profile-avatar-wrap enlarged clickable-dp"
-              onClick={() => onOpenDp && onOpenDp(profile.avatar_url || '/images/me.jpeg')}
+              onClick={() => onOpenDp && onOpenDp(profile.avatar_svg || '/images/profile-avatar.svg')}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  onOpenDp && onOpenDp(profile.avatar_url || '/images/me.jpeg');
+                  onOpenDp && onOpenDp(profile.avatar_svg || '/images/profile-avatar.svg');
                 }
               }}
-              title="Click to view Profile Picture"
+              title="Click to view Profile Picture (Crisp SVG Quality)"
               aria-label="View Profile Picture"
             >
               <div className="ongoing-avatar-story-ring">
+                {/* SVG PROFILE PICTURE FOR MAXIMUM HIGH-DPI FIDELITY */}
                 <img
-                  src={profile.avatar_url || '/images/me.jpeg'}
+                  src={profile.avatar_svg || '/images/profile-avatar.svg'}
                   alt={profile.name || 'Friedayy'}
-                  className="ongoing-gh-avatar enlarged"
+                  className="ongoing-gh-avatar enlarged svg-quality"
+                  width="118"
+                  height="118"
+                  onError={(e) => {
+                    if (e.currentTarget.src.indexOf('profile-avatar.svg') !== -1) {
+                      e.currentTarget.src = '/images/me.svg';
+                    } else if (e.currentTarget.src.indexOf('me.svg') !== -1) {
+                      e.currentTarget.src = profile.avatar_url || '/images/me.jpeg';
+                    }
+                  }}
                 />
                 <div className="ongoing-avatar-hover-overlay">
                   <User size={22} className="avatar-hover-icon" />
@@ -346,13 +402,13 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
 
                 <button
                   type="button"
-                  onClick={() => onOpenDp && onOpenDp(profile.avatar_url || '/images/me.jpeg')}
+                  onClick={() => onOpenDp && onOpenDp(profile.avatar_svg || '/images/profile-avatar.svg')}
                   className="ongoing-dp-badge-btn"
-                  title="View Profile Picture"
+                  title="View Profile Picture (SVG Quality)"
                   aria-label="View Profile Picture"
                 >
                   <User size={14} className="ongoing-dp-badge-icon" />
-                  <span>Profile Picture</span>
+                  <span>Profile Picture (SVG)</span>
                 </button>
               </div>
 
@@ -501,7 +557,15 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
                       )}
 
                       {evt.commitSha && (
-                        <span className="gh-commit-sha">{evt.commitSha}</span>
+                        <a
+                          href={evt.url || `${evt.repo.url}/commit/${evt.commitSha}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="gh-commit-sha gh-commit-sha-link"
+                          title={`View commit ${evt.commitSha} on GitHub`}
+                        >
+                          {evt.commitSha}
+                        </a>
                       )}
 
                       <span className="gh-commit-time">

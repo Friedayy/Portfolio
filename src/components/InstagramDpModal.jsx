@@ -32,7 +32,7 @@ export default function InstagramDpModal({ isOpen, onClose, avatarUrl }) {
 
   if (!isOpen) return null;
 
-  const displayAvatar = avatarUrl || personal.avatar || '/images/me.jpeg';
+  const displayAvatar = avatarUrl || personal.avatarSvg || personal.avatar || '/images/profile-avatar.svg';
   const instagramSocial = socials.find((s) => s.name === 'Instagram');
   const githubSocial = socials.find((s) => s.name === 'GitHub');
 
@@ -87,7 +87,9 @@ export default function InstagramDpModal({ isOpen, onClose, avatarUrl }) {
                 decoding="sync"
                 fetchPriority="high"
                 onError={(e) => {
-                  if (e.target.src !== '/images/me.jpeg') {
+                  if (e.target.src.indexOf('profile-avatar.svg') !== -1) {
+                    e.target.src = '/images/me.svg';
+                  } else if (e.target.src.indexOf('me.svg') !== -1) {
                     e.target.src = '/images/me.jpeg';
                   }
                 }}

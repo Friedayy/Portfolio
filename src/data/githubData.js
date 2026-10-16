@@ -4,6 +4,7 @@ export const githubFallbackData = {
     name: "Mohammad Amaan Bhat",
     bio: "Pressure is a Privilege!",
     avatar_url: "https://avatars.githubusercontent.com/u/159772893?v=4",
+    avatar_svg: "/images/profile-avatar.svg",
     html_url: "https://github.com/Friedayy",
     public_repos: 15,
     public_gists: 0,
@@ -107,64 +108,92 @@ export const githubFallbackData = {
   // Fallback public events for Amaan's GitHub feed
   fallbackEvents: [
     {
-      id: "evt-1",
+      id: "evt-7ad3c8f",
+      type: "PushEvent",
+      repo: { name: "Friedayy/Portfolio", url: "https://github.com/Friedayy/Portfolio" },
+      branch: "main",
+      commitSha: "7ad3c8f",
+      message: "feat(router): switch to clean /ongoing URL path without hash",
+      time: "Today",
+      createdAt: "2026-10-16T16:46:24Z",
+      url: "https://github.com/Friedayy/Portfolio/commit/7ad3c8fc616e1af89e0de11fd0d905dc235253dd"
+    },
+    {
+      id: "evt-1f3ba12",
+      type: "PushEvent",
+      repo: { name: "Friedayy/Portfolio", url: "https://github.com/Friedayy/Portfolio" },
+      branch: "main",
+      commitSha: "1f3ba12",
+      message: "fix: track src/data, add contact social icons, and remove legacy folder",
+      time: "Today",
+      createdAt: "2026-10-16T16:28:47Z",
+      url: "https://github.com/Friedayy/Portfolio/commit/1f3ba129ffd77fa47988129d80a92341386ad8d4"
+    },
+    {
+      id: "evt-9da5cf8",
+      type: "PushEvent",
+      repo: { name: "Friedayy/Portfolio", url: "https://github.com/Friedayy/Portfolio" },
+      branch: "main",
+      commitSha: "9da5cf8",
+      message: "feat: complete portfolio rewrite to React + Vite with Midnight Nebula theme and CI/CD deployment",
+      time: "Today",
+      createdAt: "2026-10-16T16:04:03Z",
+      url: "https://github.com/Friedayy/Portfolio/commit/9da5cf81dafe039a439fc5754a7061ea9d1ff40a"
+    },
+    {
+      id: "evt-a9d0383",
       type: "PushEvent",
       repo: { name: "Friedayy/solar-flare", url: "https://github.com/Friedayy/solar-flare" },
       branch: "main",
       commitSha: "a9d0383",
-      message: "feat: refine real-time solar flare forecasting telemetry & NOAA GOES parameters",
-      time: "2 days ago",
-      createdAt: "2026-10-12T15:54:33Z"
+      message: "feat: figures & deliverables report for solar flare forecasting",
+      time: "4 days ago",
+      createdAt: "2026-10-12T15:54:26Z",
+      url: "https://github.com/Friedayy/solar-flare/commit/a9d03839947c42d89b0cf7c95fe34d9c3486dc84"
     },
     {
-      id: "evt-2",
-      type: "PushEvent",
-      repo: { name: "Friedayy/Portfolio", url: "https://github.com/Friedayy/Portfolio" },
-      branch: "main",
-      commitSha: "f81c92a",
-      message: "feat: add dedicated GitHub Progress page with sidebar and live API synchronization",
-      time: "3 days ago",
-      createdAt: "2026-10-11T12:30:15Z"
-    },
-    {
-      id: "evt-3",
+      id: "evt-78d0a22",
       type: "PushEvent",
       repo: { name: "Friedayy/JavaScript", url: "https://github.com/Friedayy/JavaScript" },
       branch: "main",
-      commitSha: "e34b721",
-      message: "docs: add asynchronous JavaScript patterns & event loop demonstrations",
-      time: "5 days ago",
-      createdAt: "2026-10-09T18:22:45Z"
+      commitSha: "78d0a22",
+      message: "Update README.md with core algorithms & event loop patterns",
+      time: "4 days ago",
+      createdAt: "2026-10-12T06:25:28Z",
+      url: "https://github.com/Friedayy/JavaScript/commit/78d0a22c0a0d45c8f1b0e9e5439896ce1ae69a6a"
     },
     {
-      id: "evt-4",
+      id: "evt-e69a2b3",
       type: "PushEvent",
-      repo: { name: "Friedayy/Expense-tracker-ledger", url: "https://github.com/Friedayy/Expense-tracker-ledger" },
+      repo: { name: "Friedayy/JavaScript", url: "https://github.com/Friedayy/JavaScript" },
       branch: "main",
-      commitSha: "c791d04",
-      message: "perf: optimize balance calculation hooks and transaction query indexes",
+      commitSha: "e69a2b3",
+      message: "feat: add asynchronous JavaScript benchmarks & promise chain demos",
+      time: "6 days ago",
+      createdAt: "2026-10-10T16:33:42Z",
+      url: "https://github.com/Friedayy/JavaScript/commit/e69a2b362250edc3ed4300655f52fa8b7a4f7980"
+    },
+    {
+      id: "evt-77f98fb",
+      type: "PushEvent",
+      repo: { name: "Friedayy/solar-flare", url: "https://github.com/Friedayy/solar-flare" },
+      branch: "main",
+      commitSha: "77f98fb",
+      message: "Add solar flare favicon for browser title bar",
       time: "1 week ago",
-      createdAt: "2026-10-06T09:14:02Z"
+      createdAt: "2026-10-08T19:54:14Z",
+      url: "https://github.com/Friedayy/solar-flare/commit/77f98fbe9880f95c89a2486eff81179d7d9789aa"
     },
     {
-      id: "evt-5",
-      type: "CreateEvent",
-      repo: { name: "Friedayy/backend-learning-phase", url: "https://github.com/Friedayy/backend-learning-phase" },
+      id: "evt-fb7bb4c",
+      type: "PushEvent",
+      repo: { name: "Friedayy/solar-flare", url: "https://github.com/Friedayy/solar-flare" },
       branch: "main",
-      commitSha: "b2184cf",
-      message: "Initial commit: Node.js backend microservices and JWT authentication setup",
-      time: "2 weeks ago",
-      createdAt: "2026-09-29T14:40:10Z"
-    },
-    {
-      id: "evt-6",
-      type: "WatchEvent",
-      repo: { name: "first-contributions/first-contributions", url: "https://github.com/first-contributions/first-contributions" },
-      branch: "",
-      commitSha: "",
-      message: "Starred open-source initiative for newcomer contributions",
-      time: "3 weeks ago",
-      createdAt: "2026-09-21T11:15:00Z"
+      commitSha: "fb7bb4c",
+      message: "Support PORT environment variable for cloud deployment (Render, Railway, Heroku)",
+      time: "1 week ago",
+      createdAt: "2026-10-08T19:46:12Z",
+      url: "https://github.com/Friedayy/solar-flare/commit/fb7bb4c1d417936468c459a75e5a7ad68b0301fb"
     }
   ],
 

@@ -2584,6 +2584,23 @@
   color: var(--accent-lime);
 }
 
+.gh-commit-sha-link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.gh-commit-sha-link:hover {
+  background: rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+  border-color: var(--accent-lime);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
 .gh-commit-time {
   display: inline-flex;
   align-items: center;
@@ -4169,6 +4186,12 @@
   display: block;
   border: 2px solid #0d1117;
   transition: transform 0.3s ease;
+}
+
+.ongoing-gh-avatar.svg-quality {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  shape-rendering: geometricPrecision;
 }
 
 /* Frosted glass lens overlay directly on the avatar on hover */

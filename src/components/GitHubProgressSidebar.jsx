@@ -60,11 +60,11 @@ export default function GitHubProgressSidebar({
       <div className="gh-sidebar-profile">
         <div className="gh-avatar-container">
           <img 
-            src={profile.avatar_url || personal.avatar} 
+            src={profile.avatar_svg || personal.avatarSvg || profile.avatar_url || personal.avatar} 
             alt={profile.name || personal.name} 
             className="gh-sidebar-avatar"
             onError={(e) => {
-              e.target.src = personal.avatar;
+              e.target.src = personal.avatar || '/images/profile-avatar.svg';
             }}
           />
           <div className="gh-avatar-badge" title="Verified GitHub Developer">

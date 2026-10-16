@@ -6,6 +6,7 @@ export const portfolioData = {
     status: "Available for opportunities",
     tagline: "Building production-ready web apps, scalable APIs, and seamless digital experiences.",
     avatar: "/images/me.jpeg",
+    avatarSvg: "/images/profile-avatar.svg",
     resumeUrl: "https://drive.google.com/file/d/1FuFrUILh1HFzxJORaU8HPZJmkfM0q5oJ/view?usp=sharing",
     location: "Ramapuram, Chennai / Srinagar, India",
     email: "amaandev253@gmail.com",

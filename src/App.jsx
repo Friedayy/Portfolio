@@ -23,16 +23,16 @@ export default function App() {
   });
 
   const [isDpModalOpen, setIsDpModalOpen] = useState(false);
-  const [dpAvatarUrl, setDpAvatarUrl] = useState('/images/me.jpeg');
+  const [dpAvatarUrl, setDpAvatarUrl] = useState('/images/profile-avatar.svg');
 
   // Pre-cache avatar in memory for zero-latency, zero-blur modal display
   useEffect(() => {
     const preloader = new Image();
-    preloader.src = '/images/me.jpeg';
+    preloader.src = '/images/profile-avatar.svg';
   }, []);
 
   const handleOpenDp = (avatar) => {
-    setDpAvatarUrl(avatar || '/images/me.jpeg');
+    setDpAvatarUrl(avatar || '/images/profile-avatar.svg');
     setIsDpModalOpen(true);
   };
 
