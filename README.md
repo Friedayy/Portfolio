@@ -33,6 +33,31 @@ The site features the custom **Midnight Nebula / Linear Luxe** aesthetic — dee
 
 ---
 
+## 👨‍💻 About Me
+
+Hi there! I'm **Mohammad Amaan Bhat** (also known as **Friedayy** online) — a passionate **Full Stack Developer** with 2+ years of hands-on experience architecting modern, responsive, and performance-driven web applications.
+
+I specialize in building end-to-end digital experiences where high-speed frontend engineering meets robust, scalable backend architecture. Whether developing real-time web utilities, e-commerce platforms, or interactive glassmorphic UIs, I prioritize code modularity, design fidelity, and sub-second load times.
+
+### ⚡ Quick Facts & Snapshot
+
+| Attribute | Details |
+| :--- | :--- |
+| 📍 **Location** | Ramapuram, Chennai / Srinagar, India |
+| 💼 **Current Status** | Open to Full-Time Engineering Roles & High-Impact Freelance |
+| 🚀 **Experience** | 2+ Years building production-grade web applications |
+| 📦 **Shipped Work** | 10+ projects across React, Node.js, and modern CSS |
+| 🎯 **Focus Areas** | React 19 Ecosystem, RESTful Microservices, UI/UX Systems |
+| 🎮 **Beyond Code** | Competitive Mobile Gaming (CODM enthusiast), Minimalist Architecture, Tech Community |
+
+### 💡 Engineering Philosophy
+
+* **Visual Excellence Without Compromise**: A user interface should feel alive, intuitive, and fluid — but never at the expense of accessibility, semantic SEO, or bundle size.
+* **Resilient Architecture**: From defensive API routes to serverless fallbacks (like client-side Web3Forms delivery alongside local Node/Express servers), systems should remain reliable under all conditions.
+* **Continuous Momentum**: Always iterating, tracking progress milestones openly, and turning complex ideas into clean, functional code.
+
+---
+
 ## ✨ Key Features & Architecture
 
 * **🌌 Midnight Nebula Design System**:

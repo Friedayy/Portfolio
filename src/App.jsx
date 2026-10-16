@@ -36,16 +36,22 @@ export default function App() {
     setIsDpModalOpen(true);
   };
 
-  const isOngoingRoute = (str) => {
-    return str.includes('ongoing') || str.includes('present') || str.includes('progress');
-  };
-
-  // Client-side router: 'home' | 'ongoing'
-  const [currentPage, setCurrentPage] = useState(() => {
+  const isOngoingRoute = () => {
     const hash = window.location.hash.toLowerCase();
     const path = window.location.pathname.toLowerCase();
     const search = window.location.search.toLowerCase();
-    if (isOngoingRoute(hash) || isOngoingRoute(path) || isOngoingRoute(search)) {
+    return hash.includes('ongoing') || path.includes('ongoing') || search.includes('ongoing') ||
+           hash.includes('present') || path.includes('present') || search.includes('present') ||
+           hash.includes('progress') || path.includes('progress') || search.includes('progress');
+  };
+
+  // Client-side router: 'home' | 'ongoing' with clean URL paths
+  const [currentPage, setCurrentPage] = useState(() => {
+    if (isOngoingRoute()) {
+      // Clean up legacy hash if present (e.g. /#/ongoing -> /ongoing)
+      if (window.location.hash) {
+        window.history.replaceState(null, '', '/ongoing');
+      }
       return 'ongoing';
     }
     return 'home';
@@ -64,13 +70,13 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // Sync routing with browser hash / back & forward buttons
+  // Sync routing with browser back & forward buttons
   useEffect(() => {
     const handleRouteChange = () => {
-      const hash = window.location.hash.toLowerCase();
-      const path = window.location.pathname.toLowerCase();
-      const search = window.location.search.toLowerCase();
-      if (isOngoingRoute(hash) || isOngoingRoute(path) || isOngoingRoute(search)) {
+      if (isOngoingRoute()) {
+        if (window.location.hash) {
+          window.history.replaceState(null, '', '/ongoing');
+        }
         setCurrentPage('ongoing');
       } else {
         setCurrentPage('home');
@@ -88,9 +94,9 @@ export default function App() {
   const navigateTo = (page) => {
     setCurrentPage(page);
     if (page === 'ongoing' || page === 'present' || page === 'progress') {
-      window.location.hash = '#/ongoing';
+      window.history.pushState(null, '', '/ongoing');
     } else {
-      window.location.hash = '#/';
+      window.history.pushState(null, '', '/');
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
