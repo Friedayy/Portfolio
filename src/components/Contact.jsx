@@ -1,6 +1,38 @@
 import React, { useState } from 'react';
-import { Mail, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, Send, CheckCircle2, AlertCircle, Loader2, ArrowUpRight } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
+
+const socialProfiles = [
+  {
+    name: 'GitHub',
+    handle: '@Friedayy',
+    url: 'https://github.com/Friedayy',
+    icon: GithubIcon,
+    brandClass: 'social-github'
+  },
+  {
+    name: 'LinkedIn',
+    handle: 'Mohammad Amaan Bhat',
+    url: 'https://www.linkedin.com/in/frieday/',
+    icon: LinkedinIcon,
+    brandClass: 'social-linkedin'
+  },
+  {
+    name: 'Twitter / X',
+    handle: '@bhatAmaan_',
+    url: 'https://x.com/bhatAmaan_',
+    icon: TwitterIcon,
+    brandClass: 'social-twitter'
+  },
+  {
+    name: 'Instagram',
+    handle: '@_bhatamaan_',
+    url: 'https://www.instagram.com/_bhatamaan_/',
+    icon: InstagramIcon,
+    brandClass: 'social-instagram'
+  }
+];
 
 export default function Contact() {
   const { personal } = portfolioData;
@@ -192,20 +224,73 @@ export default function Contact() {
           </button>
         </form>
 
-        {/* Contact Info (Location & Map removed per request) */}
+        {/* Contact Info & Social Connections */}
         <div className="contact-info-card">
+          {/* Direct Email Card */}
           <div className="info-item">
-            <Mail size={20} className="info-icon" />
-            <div>
-              <div className="info-title">Email</div>
+            <div className="info-icon-wrapper">
+              <Mail size={20} className="info-icon" />
+            </div>
+            <div className="info-content-col">
+              <div className="info-title">Direct Email</div>
               <a href={`mailto:${personal.email}`} className="info-value">
                 {personal.email}
               </a>
             </div>
+            <a 
+              href={`mailto:${personal.email}`} 
+              className="info-action-link"
+              title="Compose email"
+              aria-label="Compose email to Amaan"
+            >
+              <ArrowUpRight size={17} />
+            </a>
           </div>
 
+          {/* Social Profiles Grid */}
+          <div className="contact-socials-card">
+            <div className="contact-socials-header">
+              <div className="contact-socials-title-row">
+                <span className="contact-socials-dot" />
+                <h4 className="contact-socials-heading">Social Profiles</h4>
+              </div>
+              <span className="contact-socials-sub">Developer networks &amp; social channels</span>
+            </div>
+
+            <div className="contact-socials-grid">
+              {socialProfiles.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`contact-social-tile ${social.brandClass}`}
+                    aria-label={`Open ${social.name} profile in new tab`}
+                  >
+                    <div className="contact-social-tile-left">
+                      <div className="contact-social-icon-box">
+                        <Icon size={18} />
+                      </div>
+                      <div className="contact-social-text">
+                        <span className="contact-social-platform">{social.name}</span>
+                        <span className="contact-social-handle">{social.handle}</span>
+                      </div>
+                    </div>
+                    <ArrowUpRight size={15} className="contact-social-arrow" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Direct Inquiries Note */}
           <div className="contact-direct-note">
-            <p className="direct-note-title">Direct Inquiries</p>
+            <div className="direct-note-header">
+              <span className="direct-note-pulse" />
+              <p className="direct-note-title">Direct Inquiries</p>
+            </div>
             <p className="direct-note-desc">
               Messages submitted through this form are logged and delivered straight to the backend telemetry queue. Feel free to reach out for contract work, full-time engineering roles, or tech discussions.
             </p>
