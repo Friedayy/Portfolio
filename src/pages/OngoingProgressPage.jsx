@@ -346,7 +346,7 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
                   onOpenDp && onOpenDp(profile.avatar_svg || '/images/profile-avatar.svg');
                 }
               }}
-              title="Click to view Profile Picture (Crisp SVG Quality)"
+              title="Click to view Profile Picture"
               aria-label="View Profile Picture"
             >
               <div className="ongoing-avatar-story-ring">
@@ -404,11 +404,11 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
                   type="button"
                   onClick={() => onOpenDp && onOpenDp(profile.avatar_svg || '/images/profile-avatar.svg')}
                   className="ongoing-dp-badge-btn"
-                  title="View Profile Picture (SVG Quality)"
+                  title="View Profile Picture"
                   aria-label="View Profile Picture"
                 >
                   <User size={14} className="ongoing-dp-badge-icon" />
-                  <span>Profile Picture (SVG)</span>
+                  <span>Profile Picture</span>
                 </button>
               </div>
 
