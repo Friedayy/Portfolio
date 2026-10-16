@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Dark Tech Backdrop -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0B14"/>
+      <stop offset="50%" stop-color="#111222"/>
+      <stop offset="100%" stop-color="#181930"/>
+    </linearGradient>
+
+    <!-- Glassmorphic Border -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6E57E4" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#00D2E1" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#6E57E4" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Signature Brand Gradient (Purple -> Electric Blue -> Cyan) -->
+    <linearGradient id="brandGrad" x1="10%" y1="90%" x2="90%" y2="10%">
+      <stop offset="0%" stop-color="#6E57E4"/>
+      <stop offset="45%" stop-color="#4361EE"/>
+      <stop offset="80%" stop-color="#00D2E1"/>
+      <stop offset="100%" stop-color="#4EECD5"/>
+    </linearGradient>
+
+    <!-- Soft Ambient Radial Glow -->
+    <radialGradient id="ambient" cx="46%" cy="50%" r="48%">
+      <stop offset="0%" stop-color="#6E57E4" stop-opacity="0.35"/>
+      <stop offset="65%" stop-color="#00D2E1" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect width="512" height="512" rx="136" fill="url(#bgGrad)"/>
+  <rect x="6" y="6" width="500" height="500" rx="130" fill="none" stroke="url(#borderGrad)" stroke-width="4"/>
+
+  <!-- Ambient Glow -->
+  <circle cx="240" cy="256" r="160" fill="url(#ambient)"/>
+
+  <!-- Lowercase 'a' Monogram -->
+  <!-- Bowl Loop -->
+  <path d="M 324 219
+           C 318 166, 275 130, 218 130
+           C 146 130, 96 186, 96 260
+           C 96 334, 146 390, 218 390
+           C 275 390, 318 354, 324 301"
+        fill="none"
+        stroke="url(#brandGrad)"
+        stroke-width="48"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- Stem -->
+  <path d="M 324 150
+           L 324 330
+           C 324 358, 344 374, 372 369"
+        fill="none"
+        stroke="url(#brandGrad)"
+        stroke-width="48"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- Signature Amaan Dot '.' in Vibrant Cyan -->
+  <circle cx="416" cy="362" r="19" fill="#00D2E1"/>
+</svg>

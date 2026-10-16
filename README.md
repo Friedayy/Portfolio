@@ -1,24 +1,24 @@
 <div align="center">
 
-  <img src="images/logo.jpg" alt="Amaan's Logo" width="100" style="border-radius: 50%;" />
+  <img src="public/images/logo.jpg" alt="Mohammad Amaan Bhat" width="100" style="border-radius: 50%; box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);" />
 
-  # 🌟 Mohammad Amaan Bhat — Developer Portfolio
+  # 🌌 Mohammad Amaan Bhat — Developer Portfolio v2.0
 
-  **A modern, responsive, and interactive portfolio showcasing full-stack development work, frontend design, and technical skills.**
+  **A state-of-the-art, high-performance developer portfolio built with React 19, Vite, and a custom Midnight Nebula design system.**
 
   <p align="center">
-    <a href="https://amaandev.me"><strong>🌐 Live Website: amaandev.me</strong></a> •
+    <a href="https://amaandev.me"><strong>🌐 Live Portfolio: amaandev.me</strong></a> •
     <a href="https://github.com/Friedayy"><strong>GitHub</strong></a> •
     <a href="https://www.linkedin.com/in/frieday/"><strong>LinkedIn</strong></a> •
     <a href="mailto:amaandev253@gmail.com"><strong>Email</strong></a>
   </p>
 
   <p align="center">
-    <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge&logo=vercel" alt="Status" />
-    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
-    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
-    <img src="https://img.shields.io/badge/Dark%20Mode-Supported-6E57E0?style=for-the-badge&logo=ghost" alt="Dark Mode" />
+    <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge&logo=githubpages&logoColor=white" alt="Status" />
+    <img src="https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React 19" />
+    <img src="https://img.shields.io/badge/Vite_6-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite 6" />
+    <img src="https://img.shields.io/badge/Theme-Midnight_Nebula-6366F1?style=for-the-badge" alt="Midnight Nebula" />
+    <img src="https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
   </p>
 
 </div>
@@ -27,49 +27,52 @@
 
 ## 📖 Overview
 
-This repository contains the source code for the personal portfolio of **Mohammad Amaan Bhat**. Built with vanilla **HTML5**, **CSS3**, and **JavaScript**, the site features a sleek dark mode by default, glassmorphic UI elements, smooth micro-interactions, and responsive design across all devices.
+Welcome to the personal developer portfolio repository of **Mohammad Amaan Bhat**. Completely re-architected in **v2.0** from vanilla scripts to a modern **React 19 + Vite** single-page application. 
+
+The site features the custom **Midnight Nebula / Linear Luxe** aesthetic — deep obsidian surfaces, real-time 60fps organic aurora drifts, high-precision starry micro-dot parallax matrix, frosted glass containers with specular top highlights, and instant client-side routing.
 
 ---
 
-## ✨ Key Features
+## ✨ Key Features & Architecture
 
-* **🌓 Dynamic Dark / Light Mode**:
-  * Default dark aesthetic with seamless toggle via sun/moon icon.
-  * Preferences persisted across sessions using browser `localStorage`.
-* **🔥 Interactive Hero Section**:
-  * **Live Status Badge**: Pulsing *"Available for Opportunities"* real-time availability indicator.
-  * **Typing Animation**: Dynamic role title rotation powered by `Typed.js` (*Designer*, *Gamer*, *Developer*).
-  * **Stats Strip**: Glassmorphic quick highlights showing years of experience, projects, and commitment.
-  * **Avatar Glow & Floating Badges**: Glowing radial backdrop with floating animated skill pills (*Full Stack*, *Open to Work*).
-* **🎨 Modern Visual Design**:
-  * Ambient floating parallax gradient blobs for depth.
-  * Glassmorphism cards with subtle borders and backdrop blur effects.
+* **🌌 Midnight Nebula Design System**:
+  * **Interactive Canvas Backdrop**: Smooth mathematical aurora mesh (Electric Indigo, Luminous Cyan, Deep Violet) layered with a starry micro-dot grid and silky lerped parallax scroll.
+  * **Dual Palette Engine**: Seamlessly switch between dark **Midnight Nebula** (`#07090e`) and light **Porcelain Luxury** (`#f8fafc`), with theme preferences persisted in `localStorage`.
+  * **Linear Luxe Glassmorphism**: Frosted glass cards with specular top edge highlights (`inset 0 1px 0 rgba(255, 255, 255, 0.08)`), micro-glow borders, and titanium text gradients.
+
+* **⚡ Hero Experience**:
+  * **Live Status Badge**: Pulsing *"Available for Opportunities"* availability indicator with emerald glow.
+  * **Typewriter Roles**: Smooth dynamic rotation through *Full Stack Developer*, *Backend Engineer*, *UI/UX Enthusiast*, and *Gamer*.
+  * **Profile DP Modal**: Clickable avatar with instant frosted glass backdrop modal, Instagram handle link, and high-res preview.
+  * **Hero Quick Actions**: Direct resume download, contact leap, and verified social badges.
+
+* **📊 Dedicated "Ongoing Progress & Roadmap" Page (`#/ongoing`)**:
+  * Real-time sprint dashboard showcasing current active development tickets, GitHub commit telemetry, milestone progress bars, and upcoming feature roadmap.
+  * Eye-catching glowing navigation pill button in the header for instant navigation.
+
 * **📂 Featured Projects Showcase**:
-  * Interactive cards linking directly to GitHub repositories.
-  * Smooth cyan slide-up hover effect, external link indicator badges, and keyboard accessibility (<kbd>Enter</kbd> / <kbd>Space</kbd>).
-* **🛠️ Technical Skills Grid**:
-  * Categorized frontend technologies (*HTML, CSS, JavaScript, React, Tailwind*).
-  * Backend technologies (*Node.js, Express, MongoDB, SQL*).
-* **📜 Smooth Scroll & Navigation Enhancements**:
-  * **Scroll Progress Bar**: Real-time gradient progress tracker pinned to the top.
-  * **Dynamic Sticky Header**: Glassmorphism backdrop blur and height transition on scroll.
-  * **Scroll-Spy**: Active menu indicators that update as sections are traversed.
-  * **Back-to-Top Button**: Smooth floating return button appearing past 350px scroll depth.
-* **📱 100% Responsive Layout**:
-  * Adaptive design optimized for desktop, tablet, and mobile with a custom sliding drawer menu.
+  * Interactive project cards with category badges, numeric indices, tech pills, GitHub repository links, and expandable preview drawers.
+
+* **📬 Zero-Latency Contact System**:
+  * **Serverless Production Delivery**: Direct client-side dispatch via **Web3Forms** — messages land in `amaandev253@gmail.com` without requiring an active backend server.
+  * **Local Express Companion (`server.js`)**: Built-in Node.js/Express server with Nodemailer SMTP integration and persistent logging in `data/messages.json` for local development.
+
+* **🛰️ Telemetry Dock & Sidebar**:
+  * Floating desktop dock and mobile sliding drawer with quick section jumps and live status telemetry.
 
 ---
 
-## 🛠️ Tech Stack & Libraries
+## 🛠️ Tech Stack
 
-| Technology | Purpose |
+| Domain | Technologies |
 | :--- | :--- |
-| **HTML5** | Semantic structure and SEO-friendly markup |
-| **CSS3 (Vanilla)** | Custom responsive layout, CSS variables, keyframe animations, glassmorphism |
-| **JavaScript (ES6+)** | Theme toggling, scroll progress tracking, DOM interactions, accessibility |
-| **[Typed.js](https://github.com/mattboldt/typed.js/)** | Dynamic typewriter text animation in hero |
-| **[ScrollReveal](https://scrollrevealjs.org/)** | Smooth scroll-triggered reveal animations |
-| **[Unicons](https://iconscout.com/unicons)** | Vector line icons for actions, skills, and social links |
+| **Frontend Core** | **React 19**, JSX, ES Modules |
+| **Build & Tooling** | **Vite 6**, React Plugin |
+| **Styling & Effects** | Vanilla CSS3 Design Tokens, HTML5 Canvas 2D API |
+| **Icons & Assets** | **Lucide React**, Custom SVG brand logos |
+| **Backend & Email (Dev)** | **Node.js**, **Express 5**, **Nodemailer**, **CORS**, **Dotenv** |
+| **Serverless Email (Prod)**| **Web3Forms API** |
+| **Hosting & CI/CD** | **GitHub Pages**, **GitHub Actions**, Custom Domain (`amaandev.me`) |
 
 ---
 
@@ -77,49 +80,89 @@ This repository contains the source code for the personal portfolio of **Mohamma
 
 ```plaintext
 portfolio/
-├── CNAME               # Custom domain configuration (amaandev.me)
-├── index.html          # Main application markup & sections
-├── style.css           # Global stylesheets, themes, animations & media queries
-├── main.js             # Client logic, theme persistence, scroll features & animations
-├── images/             # Profile avatar, logo & media assets
-│   ├── favicon.svg     # Stylized vector 'a.' brand favicon
-│   ├── favicon.png     # High-resolution brand icon
-│   ├── og-preview.png  # 1200x630 Open Graph & Twitter share banner
-│   ├── logo.jpg
-│   └── me.jpeg
-└── README.md           # Project documentation
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # Automated GitHub Actions deployment pipeline
+├── data/
+│   └── messages.json       # Local inquiry records (git-ignored)
+├── public/
+│   ├── CNAME               # Custom domain config (amaandev.me)
+│   └── images/             # Profile avatars, banners & logo assets
+├── src/
+│   ├── components/         # Modular React components
+│   │   ├── Contact.jsx     # Contact form with Web3Forms & local API
+│   │   ├── Experience.jsx  # Experience timeline
+│   │   ├── FloatingDock.jsx# Quick floating actions
+│   │   ├── Hero.jsx        # Hero section with role typewriter & bio
+│   │   ├── InstagramDpModal.jsx # Avatar modal preview
+│   │   ├── Navbar.jsx      # Sticky header with theme toggle & Ongoing button
+│   │   ├── Projects.jsx    # Project showcase cards
+│   │   ├── RightSidebarDock.jsx # Telemetry sidebar
+│   │   ├── SiteBackdrop.jsx# 60fps aurora canvas & parallax star-dot grid
+│   │   └── Skills.jsx      # Categorized skill chips
+│   ├── data/
+│   │   └── portfolioData.js# Centralized portfolio content & metadata
+│   ├── pages/
+│   │   └── OngoingProgressPage.jsx # Active sprint & roadmap dashboard
+│   ├── App.css             # Component styling & animations
+│   ├── App.jsx             # Main application orchestrator & client router
+│   ├── index.css           # Global design system & theme tokens
+│   └── main.jsx            # React root entry point
+├── server.js               # Express API for contact handling & SMTP
+├── vite.config.js          # Vite configuration with embedded dev API plugin
+├── package.json            # Scripts & project dependencies
+└── README.md               # Project documentation
 ```
 
 ---
 
 ## 🚀 Showcased Projects
 
-| Project | Description | Stack / Link |
+| Project | Description | Stack / Links |
 | :--- | :--- | :--- |
-| **[Ledger](https://github.com/Friedayy/Expense-tracker-ledger)** | Real-time expense tracker ledger to monitor income, expenses, and balance | [Repository](https://github.com/Friedayy/Expense-tracker-ledger) |
-| **[ShopHub](https://github.com/Friedayy/ecommerce-platform)** | Modern full-stack e-commerce web app with product listings, cart & checkout | [Repository](https://github.com/Friedayy/ecommerce-platform) |
-| **[React Apps](https://github.com/Friedayy/react-projects)** | Collection of modern interactive frontend applications and UI experiments | [Repository](https://github.com/Friedayy/react-projects) |
+| **[Ledger](https://github.com/Friedayy/Expense-tracker-ledger)** | Real-time expense tracker ledger to monitor income, expenses, and net balance with analytics. | [Repository](https://github.com/Friedayy/Expense-tracker-ledger) |
+| **[ShopHub](https://github.com/Friedayy/ecommerce-platform)** | Modern full-stack e-commerce web app with product listings, cart management, and checkout flows. | [Repository](https://github.com/Friedayy/ecommerce-platform) |
+| **[React Apps](https://github.com/Friedayy/react-projects)** | Interactive frontend applications, experiments, and custom component implementations. | [Repository](https://github.com/Friedayy/react-projects) |
 
 ---
 
 ## 💻 Running Locally
 
-To run and preview the portfolio locally:
+### 1. Clone the repository
+```bash
+git clone https://github.com/Friedayy/Portfolio.git
+cd Portfolio
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Friedayy/Portfolio.git
-   cd Portfolio
-   ```
+### 2. Install dependencies
+```bash
+npm install
+```
 
-2. **Open in browser:**
-   * Simply double-click `index.html` to open it in your default web browser, **or**
-   * Use a local development server:
-     ```bash
-     # Using Python 3
-     python3 -m http.server 5500
-     ```
-     Then navigate to `http://localhost:5500` in your browser.
+### 3. Start development server
+```bash
+# Start Vite frontend (http://localhost:5173)
+npm run dev
+
+# Or start both frontend and local Express backend concurrently
+npm run dev:all
+```
+
+### 4. Build for production
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 🚢 Deployment & CI/CD
+
+The portfolio is deployed directly to **[amaandev.me](https://amaandev.me)** via **GitHub Actions**:
+
+1. Any push to `main` triggers `.github/workflows/deploy.yml`.
+2. The workflow performs a clean install (`npm ci`), builds the production bundle with Vite (`npm run build`), configures 404 fallbacks for client routing, and publishes to GitHub Pages.
+3. Custom domain mapping is maintained automatically through `public/CNAME`.
 
 ---
 
@@ -135,5 +178,5 @@ To run and preview the portfolio locally:
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by <a href="https://github.com/Friedayy">Mohammad Amaan Bhat</a></sub>
+  <sub>Designed &amp; Developed with ⚡ by <a href="https://github.com/Friedayy">Mohammad Amaan Bhat</a></sub>
 </div>
