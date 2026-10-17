@@ -15,9 +15,11 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import OngoingProgressPage from './pages/OngoingProgressPage';
 import InstagramDpModal from './components/InstagramDpModal';
+import HackerIntroOverlay from './components/HackerIntroOverlay';
 import './App.css';
 
 export default function App() {
+  const [showIntro, setShowIntro] = useState(true);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('amaan_theme') || 'dark';
   });
@@ -151,6 +153,11 @@ export default function App() {
 
   return (
     <div className="portfolio-app">
+      {/* Cyberpunk Terminal Decryption Hacker Intro Overlay */}
+      {showIntro && (
+        <HackerIntroOverlay onComplete={() => setShowIntro(false)} />
+      )}
+
       {/* Top Scroll Progress Slide Bar (samidev.work signature) */}
       <ScrollProgress />
 
