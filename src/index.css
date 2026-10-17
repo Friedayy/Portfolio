@@ -1,11 +1,69 @@
+/* ==================== CLASH OF CLANS FONT (SUPERCELL MAGIC) ==================== */
+@font-face {
+  font-family: 'Supercell-Magic';
+  src: url('/fonts/Supercell-Magic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Supercell-Magic';
+  src: url('/fonts/Supercell-Magic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Supercell-Magic';
+  src: url('/fonts/Supercell-Magic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Supercell-Magic';
+  src: url('/fonts/Supercell-Magic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Supercell-Magic';
+  src: url('/fonts/Supercell-Magic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Supercell-Magic';
+  src: url('/fonts/Supercell-Magic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Supercell-Magic';
+  src: url('/fonts/Supercell-Magic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ==================== DESIGN SYSTEM & TOKENS ====================
    MIDNIGHT NEBULA / LINEAR LUXE THEME
    Deep obsidian space, soft aurora ambient glow, electric indigo & cyan accents,
    and specular frosted glass cards.
    ================================================================== */
 :root {
-  --font-sans: 'Manrope', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Outfit', 'Manrope', sans-serif;
+  --font-sans: 'Supercell-Magic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Supercell-Magic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Supercell-Magic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Theme: Dark (Midnight Nebula / Linear Luxe) */
@@ -85,6 +143,8 @@ html {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   color-scheme: dark;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 [data-theme='light'] html {
@@ -102,6 +162,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: color 0.3s ease;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 [data-theme='light'] body {
@@ -136,13 +198,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 p {
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.65;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 a {

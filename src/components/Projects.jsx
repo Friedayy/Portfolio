@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import { 
-  Monitor, 
-  ExternalLink, 
-  Code2, 
-  BookOpen, 
-  Image as ImageIcon,
-  CheckCircle2
-} from 'lucide-react';
+import React from 'react';
+import { ExternalLink, Code2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import TechLogo from './TechLogo';
 
 export default function Projects() {
   const { projects } = portfolioData;
-  const [activeScreenshot, setActiveScreenshot] = useState(null);
 
   return (
     <section id="work" className="portfolio-section projects-section">
@@ -24,7 +17,7 @@ export default function Projects() {
           </h2>
         </div>
         <p className="section-subtitle">
-          Selected work — live demos, code, and case studies
+          Selected work — live applications and open source code
         </p>
       </div>
 
@@ -34,15 +27,6 @@ export default function Projects() {
           <div 
             key={proj.id} 
             className="project-card"
-            onMouseMove={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              e.currentTarget.style.setProperty('--card-mouse-x', `${e.clientX - rect.left}px`);
-              e.currentTarget.style.setProperty('--card-mouse-y', `${e.clientY - rect.top}px`);
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.removeProperty('--card-mouse-x');
-              e.currentTarget.style.removeProperty('--card-mouse-y');
-            }}
           >
             {/* Card Top Meta */}
             <div className="project-card-top-row">
@@ -69,7 +53,7 @@ export default function Projects() {
             <div className="project-card-tech-row">
               {proj.tags.map((tag, tIdx) => (
                 <span key={tIdx} className="project-tech-chip">
-                  <span className="tech-chip-dot" />
+                  <TechLogo name={tag} size={14} className="tech-logo-svg" />
                   <span>{tag}</span>
                 </span>
               ))}
@@ -84,20 +68,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-action-link"
-                    title="Preview demo"
-                  >
-                    <Monitor size={13} />
-                    <span>Preview</span>
-                  </a>
-                )}
-
-                {proj.demoUrl && (
-                  <a
-                    href={proj.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-action-link"
-                    title="Open live app"
+                    title="Open live application"
                   >
                     <ExternalLink size={13} />
                     <span>Live</span>
@@ -116,56 +87,8 @@ export default function Projects() {
                     <span>Code</span>
                   </a>
                 )}
-
-                {proj.githubUrl && (
-                  <a
-                    href={proj.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-action-link"
-                    title="Read technical case study"
-                  >
-                    <BookOpen size={13} />
-                    <span>Case study</span>
-                  </a>
-                )}
               </div>
-
-              <button
-                type="button"
-                onClick={() => setActiveScreenshot(activeScreenshot === proj.id ? null : proj.id)}
-                className="project-action-link project-screenshot-action-btn"
-                title="Toggle visual overview"
-              >
-                <ImageIcon size={13} />
-                <span>Screenshot</span>
-              </button>
             </div>
-
-            {/* Expanded Screenshot Drawer if clicked */}
-            {activeScreenshot === proj.id && (
-              <div className="project-card-screenshot-drawer">
-                <div className="screenshot-mockup-frame">
-                  <div className="mockup-header-dots">
-                    <span className="dot red" />
-                    <span className="dot yellow" />
-                    <span className="dot green" />
-                    <span className="mockup-url">{proj.title.toLowerCase().replace(/[\s—]+/g, '-')}.app</span>
-                  </div>
-                  <div className="mockup-preview-content">
-                    <div className="mockup-banner">
-                      <h4>{proj.title}</h4>
-                      <p>{proj.tagline}</p>
-                    </div>
-                    <div className="mockup-chips">
-                      {proj.tags.map((t, i) => (
-                        <span key={i} className="mockup-chip">{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         ))}
       </div>

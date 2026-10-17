@@ -142,19 +142,6 @@ export const portfolioData = {
       tags: ["React", "JavaScript", "REST API", "CSS Modules", "Vite"],
       difficulty: "Advanced",
       impact: "High conversion eCommerce interface"
-    },
-    {
-      id: "react-apps",
-      title: "Interactive React UI Suite",
-      tagline: "Modern frontend applications & interactive UI components",
-      description: "A curated collection of production-grade micro-applications showcasing advanced hooks, reusable component patterns, theme switching, and smooth micro-interactions.",
-      status: "DEPLOYED",
-      featured: false,
-      githubUrl: "https://github.com/Friedayy/react-projects",
-      demoUrl: "https://github.com/Friedayy/react-projects",
-      tags: ["React", "Custom Hooks", "State Management", "Tailwind/CSS"],
-      difficulty: "Intermediate",
-      impact: "Reusable component architecture"
     }
   ],
 

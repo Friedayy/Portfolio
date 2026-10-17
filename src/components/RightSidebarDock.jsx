@@ -16,23 +16,30 @@ export default function RightSidebarDock({
   const { profile } = githubFallbackData;
 
   return (
-    <aside 
-      className={`samidev-right-sidebar-dock ${isOpen ? 'expanded' : 'collapsed'}`}
-      aria-label="GitHub progress telemetry sidebar"
-    >
-      {/* Slider Arrow Tab attached to left edge of sidebar */}
-      <button
-        type="button"
+    <>
+      {/* Mobile Backdrop to allow tapping outside to close the expanded dock */}
+      <div 
+        className={`dock-mobile-backdrop ${isOpen ? 'active' : ''}`}
         onClick={onToggle}
-        className="samidev-slider-arrow-tab"
-        aria-label={isOpen ? "Collapse telemetry sidebar" : "Expand telemetry sidebar"}
-        title={isOpen ? "Collapse sidebar" : "Open GitHub telemetry sidebar"}
+        aria-hidden="true"
+      />
+      <aside 
+        className={`samidev-right-sidebar-dock ${isOpen ? 'expanded' : 'collapsed'}`}
+        aria-label="GitHub progress telemetry sidebar"
       >
-        {isOpen ? <ChevronRight size={17} /> : <ChevronLeft size={17} />}
-      </button>
+        {/* Slider Arrow Tab attached to left edge of sidebar */}
+        <button
+          type="button"
+          onClick={onToggle}
+          className="samidev-slider-arrow-tab"
+          aria-label={isOpen ? "Collapse telemetry sidebar" : "Expand telemetry sidebar"}
+          title={isOpen ? "Collapse sidebar" : "Open GitHub telemetry sidebar"}
+        >
+          {isOpen ? <ChevronRight size={17} /> : <ChevronLeft size={17} />}
+        </button>
 
-      {/* Vertical Sidebar Panel: STRICTLY GitHub Progress Telemetry & Ongoing link */}
-      <div className="samidev-dock-pill-panel telemetry-only">
+        {/* Vertical Sidebar Panel: STRICTLY GitHub Progress Telemetry & Ongoing link */}
+        <div className="samidev-dock-pill-panel telemetry-only">
         <div className="samidev-dock-github-card">
           <div className="samidev-gh-card-header">
             <div className="samidev-gh-logo-group">
@@ -76,5 +83,6 @@ export default function RightSidebarDock({
         </div>
       </div>
     </aside>
+  </>
   );
 }

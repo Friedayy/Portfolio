@@ -37,7 +37,7 @@ export default function Navbar({
   return (
     <header className={`samidev-navbar ${isScrolled ? 'visible' : 'hidden'}`}>
       <div className="samidev-nav-inner">
-        {/* Left Monogram Box matching Picture 2 */}
+        {/* Left Monogram Box - Eye-Catching Neon Glass Cyber Badge */}
         <a 
           href="#top" 
           className="samidev-nav-monogram-box"
@@ -46,8 +46,11 @@ export default function Navbar({
             scrollTo('top'); 
           }}
           title="Return to top"
+          aria-label="Amaan Monogram - Return to top"
         >
+          <span className="samidev-monogram-glow" aria-hidden="true" />
           <span className="samidev-monogram-text">AM</span>
+          <span className="samidev-monogram-pip" aria-hidden="true" />
         </a>
 
         {/* Center Pill Links matching Picture 2 */}
@@ -97,12 +100,19 @@ export default function Navbar({
           </button>
         </nav>
 
-        {/* Right Traveler Count & Theme Toggle matching Picture 2 */}
+        {/* Right Controls (Mobile Ongoing, Theme Toggle, & Mobile Menu) */}
         <div className="samidev-nav-right">
-          <div className="samidev-traveler-badge" title="Active live visitor">
-            <span className="traveler-dot" />
-            <span className="traveler-text">1 TRAVELER</span>
-          </div>
+          {/* Direct Mobile Ongoing button for 1-tap navigation */}
+          <button
+            type="button"
+            className="nav-ongoing-btn nav-ongoing-btn--mobile"
+            onClick={onNavigateToProgress}
+            title="Open Ongoing Progress & Telemetry Page"
+            aria-label="Open Ongoing Progress Page"
+          >
+            <span className="nav-ongoing-pulse" />
+            <span>ONGOING</span>
+          </button>
 
           <button
             type="button"
@@ -119,6 +129,7 @@ export default function Navbar({
             className="samidev-mobile-menu-btn"
             onClick={onOpenMenu}
             aria-label="Open menu drawer"
+            title="Open navigation menu"
           >
             <Menu size={18} />
           </button>

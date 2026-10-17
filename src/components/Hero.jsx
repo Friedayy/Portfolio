@@ -1,42 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Mail, Sun, Moon, Globe } from 'lucide-react';
+import { FileText, Mail, Sun, Moon, Globe, Code2, Gamepad2, Palette } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export default function Hero({ theme, toggleTheme }) {
+const ROLES = [
+  { label: 'Developer', icon: Code2, color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.12)', border: 'rgba(56, 189, 248, 0.35)' },
+  { label: 'Gamer', icon: Gamepad2, color: '#c084fc', bg: 'rgba(192, 132, 252, 0.12)', border: 'rgba(192, 132, 252, 0.35)' },
+  { label: 'Designer', icon: Palette, color: '#34d399', bg: 'rgba(52, 211, 153, 0.12)', border: 'rgba(52, 211, 153, 0.35)' }
+];
+
+export default function Hero({ theme, toggleTheme, onNavigateToProgress }) {
   const { personal } = portfolioData;
 
   // Dynamic Typewriter Animation: Developer -> Gamer -> Designer -> Developer
-  const roles = ['Developer', 'Gamer', 'Designer'];
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('Developer');
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const currentRole = ROLES[roleIndex];
+  const CurrentIcon = currentRole.icon;
+
   useEffect(() => {
-    const currentWord = roles[roleIndex];
+    const currentWord = ROLES[roleIndex].label;
     let timeout;
 
     if (!isDeleting) {
       if (displayText.length < currentWord.length) {
         timeout = setTimeout(() => {
           setDisplayText(currentWord.slice(0, displayText.length + 1));
-        }, 100);
+        }, 90);
       } else {
-        // Pause for 2 seconds on fully typed word
+        // Pause for 2.2 seconds on fully typed word
         timeout = setTimeout(() => {
           setIsDeleting(true);
-        }, 2000);
+        }, 2200);
       }
     } else {
       if (displayText.length > 0) {
         timeout = setTimeout(() => {
           setDisplayText(currentWord.slice(0, displayText.length - 1));
-        }, 60);
+        }, 50);
       } else {
-        // Pause 300ms on empty state before typing next word
+        // Pause 250ms on empty state before typing next word
         timeout = setTimeout(() => {
           setIsDeleting(false);
-          setRoleIndex((prev) => (prev + 1) % roles.length);
-        }, 300);
+          setRoleIndex((prev) => (prev + 1) % ROLES.length);
+        }, 250);
       }
     }
 
@@ -53,7 +61,7 @@ export default function Hero({ theme, toggleTheme }) {
 
   return (
     <section id="about" className="hero-sami-section">
-      {/* Top Action Buttons (CV, Contact, Theme Toggle) */}
+      {/* Top Action Buttons (CV, Contact, Ongoing, Theme Toggle) */}
       <div className="hero-top-actions-bar">
         <div className="hero-top-left-status">
           <span className="hero-status-pulse-dot" />
@@ -61,6 +69,20 @@ export default function Hero({ theme, toggleTheme }) {
         </div>
 
         <div className="hero-actions-cluster">
+          {/* Ongoing Hub Pill Button */}
+          {onNavigateToProgress && (
+            <button 
+              type="button" 
+              onClick={onNavigateToProgress}
+              className="hero-ongoing-pill-btn"
+              title="Open Ongoing Progress & Telemetry"
+              aria-label="Open Ongoing Progress Page"
+            >
+              <span className="hero-ongoing-pulse-dot" />
+              <span>Ongoing</span>
+            </button>
+          )}
+
           {/* CV Pill Button */}
           <a 
             href={personal.resumeUrl} 
@@ -103,15 +125,46 @@ export default function Hero({ theme, toggleTheme }) {
           Hi, I'm <span className="hero-name-highlight">{personal.shortName}</span><span className="hero-title-accent-dot">.</span>
         </h1>
         <div className="hero-role-subline" aria-live="polite">
-          <span className="hero-typed-role">{displayText || '\u00A0'}</span>
-          <span className="hero-typing-cursor">|</span>
+          <div 
+            className="hero-role-badge"
+            style={{
+              borderColor: currentRole.border
+            }}
+            onClick={() => {
+              setIsDeleting(false);
+              const nextIdx = (roleIndex + 1) % ROLES.length;
+              setRoleIndex(nextIdx);
+              setDisplayText(ROLES[nextIdx].label);
+            }}
+            title="Click to switch role (Developer, Gamer, Designer)"
+            role="button"
+            tabIndex={0}
+          >
+            <span 
+              className="hero-role-icon-box" 
+              style={{ 
+                color: currentRole.color,
+                background: currentRole.bg,
+                borderColor: currentRole.border
+              }}
+            >
+              <CurrentIcon size={26} className="hero-role-icon-svg" />
+            </span>
+            <span 
+              className="hero-typed-role"
+              style={{ color: currentRole.color }}
+            >
+              {displayText || '\u00A0'}
+            </span>
+            <span className="hero-typing-cursor" style={{ backgroundColor: currentRole.color }} />
+          </div>
         </div>
       </div>
 
       {/* Sleek Dark Bio Card with Inline Highlight Tags */}
       <div className="hero-bio-capsule-card">
         <p className="hero-bio-paragraph">
-          I am a passionate <span className="hero-highlight-tag">Full Stack Developer</span> with 2+ years of hands-on experience building modern, responsive, and <span className="hero-highlight-tag">performance-focused web applications</span>. Proficient in both <span className="hero-highlight-tag">frontend architecture</span> and <span className="hero-highlight-tag">robust backend systems</span>.
+          I am a passionate <span className="hero-highlight-tag">Full Stack Developer</span> with 2+ years of hands-on experience building modern, responsive, and <span className="hero-highlight-tag">performance-focused web apps</span>. Proficient in both <span className="hero-highlight-tag">frontend architecture</span> and <span className="hero-highlight-tag">robust backend systems</span>.
         </p>
       </div>
 

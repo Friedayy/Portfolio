@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
+import TechLogo from './TechLogo';
 
 export default function GitHubProgressSidebar({ 
   profile, 
@@ -125,7 +126,11 @@ export default function GitHubProgressSidebar({
         </div>
         <div className="gh-stat-row">
           <span className="gh-stat-label">Primary Stack</span>
-          <span className="gh-stat-val stack">{stats.primaryLanguage}</span>
+          <span className="gh-stat-val stack">
+            <TechLogo name="JavaScript" size={13} className="tech-logo-svg" />
+            <TechLogo name="React" size={13} className="tech-logo-svg" />
+            <span>{stats.primaryLanguage}</span>
+          </span>
         </div>
       </div>
 

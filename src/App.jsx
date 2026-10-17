@@ -59,6 +59,7 @@ export default function App() {
 
   const [activeSection, setActiveSection] = useState('top');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDockOpen, setIsDockOpen] = useState(false);
 
   // Apply theme to document
   useEffect(() => {
@@ -92,6 +93,8 @@ export default function App() {
   }, []);
 
   const navigateTo = (page) => {
+    setIsDrawerOpen(false);
+    setIsDockOpen(false);
     setCurrentPage(page);
     if (page === 'ongoing' || page === 'present' || page === 'progress') {
       window.history.pushState(null, '', '/ongoing');
@@ -177,10 +180,18 @@ export default function App() {
             currentPage={currentPage}
           />
 
+          {/* Full Navigation Drawer for Mobile Header Menu */}
+          <SidebarDrawer
+            isOpen={isDrawerOpen}
+            onClose={() => setIsDrawerOpen(false)}
+            activeSection={activeSection}
+            onNavigateToProgress={() => navigateTo('ongoing')}
+          />
+
           {/* Right Sidebar Dock with Slider Arrow matching Picture 1 & 2 */}
           <RightSidebarDock
-            isOpen={isDrawerOpen}
-            onToggle={() => setIsDrawerOpen(!isDrawerOpen)}
+            isOpen={isDockOpen}
+            onToggle={() => setIsDockOpen(!isDockOpen)}
             activeSection={activeSection}
             onNavigateToProgress={() => navigateTo('ongoing')}
           />
@@ -191,6 +202,7 @@ export default function App() {
               <Hero 
                 theme={theme} 
                 toggleTheme={toggleTheme} 
+                onNavigateToProgress={() => navigateTo('ongoing')}
               />
             </div>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import TechLogo from './TechLogo';
 
 export default function Experience() {
   const { experience } = portfolioData;
@@ -40,7 +41,10 @@ export default function Experience() {
 
             <div className="tech-tag-row">
               {item.technologies.map((tech, idx) => (
-                <span key={idx} className="tech-pill">{tech}</span>
+                <span key={idx} className="tech-pill">
+                  <TechLogo name={tech} size={14} className="tech-logo-svg" />
+                  <span>{tech}</span>
+                </span>
               ))}
             </div>
           </div>

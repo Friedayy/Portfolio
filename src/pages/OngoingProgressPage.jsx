@@ -18,6 +18,7 @@ import {
 import { GithubIcon } from '../components/BrandIcons';
 import { githubFallbackData } from '../data/githubData';
 import { portfolioData } from '../data/portfolioData';
+import TechLogo from '../components/TechLogo';
 
 // GitHub official language colors
 const GITHUB_LANG_COLORS = {
@@ -279,50 +280,7 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
         </div>
       </header>
 
-      {/* Hero Banner (Picture removed per request) */}
-      <div className="ongoing-hero-banner">
-        <div className="ongoing-hero-text">
-          <div className="ongoing-subtag">// ONGOING & GITHUB TELEMETRY</div>
-          <h1 className="ongoing-title">
-            Ongoing <span className="gradient-text">Progress Hub</span>
-          </h1>
-          <p className="ongoing-desc">
-            Tracking what I'm shipping now and real-time GitHub progress for{' '}
-            <a
-              href="https://github.com/Friedayy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gh-link-highlight"
-            >
-              @Friedayy
-            </a>.
-          </p>
-        </div>
-      </div>
-
-      {/* SECTION 1: ONGOING PROGRESS */}
-      <section className="ongoing-section">
-        <div className="ongoing-section-header">
-          <div className="ongoing-section-label">
-            <Compass size={16} />
-            <span>Current Learning & Shipping Focus</span>
-          </div>
-          <h2 className="ongoing-section-title">What I'm Doing Now</h2>
-        </div>
-
-        {/* 3 Core Topics (Milestones cards removed per request) */}
-        <div className="ongoing-topics-grid">
-          {now.items.map((item, idx) => (
-            <div key={idx} className="ongoing-topic-card">
-              <span className="topic-num">0{idx + 1}</span>
-              <h3 className="topic-title">{item.topic}</h3>
-              <p className="topic-desc">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SECTION 2: GITHUB PROGRESS (WITH LIVE FETCHED GITHUB PROFILE PICTURE) */}
+      {/* SECTION 1: GITHUB PROGRESS (WITH LIVE FETCHED GITHUB PROFILE PICTURE) */}
       <section className="ongoing-section">
         <div className="ongoing-section-header">
           <div className="ongoing-section-label">
@@ -332,8 +290,12 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
           <h2 className="ongoing-section-title">GitHub Metrics & Commit Progress</h2>
         </div>
 
-        {/* ENLARGED GITHUB LIVE PROFILE SHOWCASE */}
-        <div className="ongoing-gh-profile-card enlarged">
+        {/* SIDE-BY-SIDE: GITHUB DETAILS & COMMIT PROGRESS */}
+        <div className="ongoing-gh-layout-grid">
+          {/* LEFT: GITHUB DETAILS (Profile, Stats, Languages) */}
+          <div className="ongoing-gh-details-column">
+            {/* ENLARGED GITHUB LIVE PROFILE SHOWCASE */}
+            <div className="ongoing-gh-profile-card enlarged">
           <div className="gh-profile-user-info enlarged">
             <div
               className="gh-profile-avatar-wrap enlarged clickable-dp"
@@ -502,17 +464,19 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
           <div className="gh-languages-legend">
             {languages.map((lang, idx) => (
               <div key={lang.name || idx} className="gh-language-legend-item">
-                <span
-                  className="gh-language-color-dot"
-                  style={{ backgroundColor: lang.color }}
-                />
+                <span className="gh-language-logo-badge">
+                  <TechLogo name={lang.name} size={15} className="tech-logo-svg" />
+                </span>
                 <span className="gh-language-name">{lang.name}</span>
                 <span className="gh-language-percentage">{lang.percentage}%</span>
               </div>
             ))}
           </div>
         </div>
+      </div>
 
+      {/* RIGHT: COMMIT PROGRESS STREAM */}
+      <div className="ongoing-gh-commits-column">
         {/* 4. Commit Progress Stream */}
         <div className="ongoing-commit-block">
           <div className="gh-terminal-card">
@@ -580,6 +544,30 @@ export default function OngoingProgressPage({ onBackToHome, theme, onOpenDp }) {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      {/* SECTION 2: WHAT I'M DOING NOW */}
+      <section className="ongoing-section">
+        <div className="ongoing-section-header">
+          <div className="ongoing-section-label">
+            <Compass size={16} />
+            <span>Current Learning &amp; Shipping Focus</span>
+          </div>
+          <h2 className="ongoing-section-title">What I'm Doing Now</h2>
+        </div>
+
+        {/* 3 Core Topics */}
+        <div className="ongoing-topics-grid">
+          {now.items.map((item, idx) => (
+            <div key={idx} className="ongoing-topic-card">
+              <span className="topic-num">0{idx + 1}</span>
+              <h3 className="topic-title">{item.topic}</h3>
+              <p className="topic-desc">{item.description}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

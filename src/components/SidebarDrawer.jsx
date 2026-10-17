@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Download, X, Target, Sparkles, Mail, Compass } from 'lucide-react';
+import React from 'react';
+import { Download, X, Mail, Compass } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
 
@@ -13,7 +13,6 @@ const iconMap = {
 
 export default function SidebarDrawer({ isOpen, onClose, activeSection, onNavigateToProgress }) {
   const { personal, socials } = portfolioData;
-  const [viewMode, setViewMode] = useState('focused');
 
   const navItems = [
     { id: 'top', number: '01', label: 'About' },
@@ -91,26 +90,6 @@ export default function SidebarDrawer({ isOpen, onClose, activeSection, onNaviga
           </div>
           <span className="nav-live-dot" />
         </button>
-
-        {/* samidev.me Experience Mode Switcher */}
-        <div className="switch-pod" style={{ marginTop: '12px' }}>
-          <button
-            type="button"
-            className={`pod-btn ${viewMode === 'focused' ? 'active' : ''}`}
-            onClick={() => setViewMode('focused')}
-          >
-            <Target size={13} />
-            <span>Focused</span>
-          </button>
-          <button
-            type="button"
-            className={`pod-btn ${viewMode === 'playful' ? 'active' : ''}`}
-            onClick={() => setViewMode('playful')}
-          >
-            <Sparkles size={13} />
-            <span>Playful</span>
-          </button>
-        </div>
 
         {/* Numbered Navigation List - Only Work, Experience, Skills, Contact */}
         <nav className="drawer-nav">

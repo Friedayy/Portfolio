@@ -1,5 +1,6 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolioData';
+import TechLogo from './TechLogo';
 
 export default function Skills() {
   const { skillsCategories } = portfolioData;
@@ -30,7 +31,8 @@ export default function Skills() {
             <div className="skills-tags-wrap">
               {cat.skills.map((skill, sIdx) => (
                 <span key={sIdx} className="tech-pill">
-                  {skill}
+                  <TechLogo name={skill} size={15} className="tech-logo-svg" />
+                  <span>{skill}</span>
                 </span>
               ))}
             </div>
