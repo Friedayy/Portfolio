@@ -15,11 +15,11 @@ export default function SidebarDrawer({ isOpen, onClose, activeSection, onNaviga
   const { personal, socials } = portfolioData;
 
   const navItems = [
-    { id: 'top', number: '01', label: 'About' },
-    { id: 'work', number: '02', label: 'Work' },
-    { id: 'experience', number: '03', label: 'Experience' },
-    { id: 'skills', number: '04', label: 'Skills' },
-    { id: 'contact', number: '05', label: 'Contact' }
+    { id: 'top', number: '01', label: 'ABOUT' },
+    { id: 'work', number: '02', label: 'WORK' },
+    { id: 'experience', number: '03', label: 'EXPERIENCE' },
+    { id: 'skills', number: '04', label: 'SKILLS' },
+    { id: 'contact', number: '05', label: 'CONTACT' }
   ];
 
   const handleNavClick = (id) => {
