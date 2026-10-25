@@ -61,17 +61,20 @@ I specialize in building end-to-end digital experiences where high-speed fronten
 ## ✨ Key Features & Architecture
 
 * **🌌 Midnight Nebula Design System**:
-  * **Interactive Canvas Backdrop**: Smooth mathematical aurora mesh (Electric Indigo, Luminous Cyan, Deep Violet) layered with a starry micro-dot grid and silky lerped parallax scroll.
+  * **Interactive Canvas Backdrop**: Smooth mathematical aurora mesh layered with dynamic digital glyph streams, ambient emerald/indigo glow, and silky lerped parallax scroll.
   * **Dual Palette Engine**: Seamlessly switch between dark **Midnight Nebula** (`#07090e`) and light **Porcelain Luxury** (`#f8fafc`), with theme preferences persisted in `localStorage`.
   * **Linear Luxe Glassmorphism**: Frosted glass cards with specular top edge highlights (`inset 0 1px 0 rgba(255, 255, 255, 0.08)`), micro-glow borders, and titanium text gradients.
+  * **Executive Typography Suite**: Harmonious typography hierarchy using **Outfit** for structural titles, **Inter** and **Plus Jakarta Sans** for crisp, highly-legible body copy, and **JetBrains Mono** for developer telemetry and code.
+  * **Zero-Latency Native Cursor UX**: Instant, lag-free OS cursor responsiveness with tactile hover states across interactive cards, pills, and action buttons.
 
 * **⚡ Hero Experience**:
+  * **Cyberpunk Terminal Decryption**: Fast identity decryption sequence on initial load with instant `[ESC]` skip functionality.
   * **Live Status Badge**: Pulsing *"Available for Opportunities"* availability indicator with emerald glow.
   * **Typewriter Roles**: Smooth dynamic rotation through *Full Stack Developer*, *Backend Engineer*, *UI/UX Enthusiast*, and *Gamer*.
   * **Profile DP Modal**: Clickable avatar with instant frosted glass backdrop modal, Instagram handle link, and high-res preview.
   * **Hero Quick Actions**: Direct resume download, contact leap, and verified social badges.
 
-* **📊 Dedicated "Ongoing Progress & Roadmap" Page (`#/ongoing`)**:
+* **📊 Dedicated "Ongoing Progress & Roadmap" Page (`/ongoing`)**:
   * Real-time sprint dashboard showcasing current active development tickets, GitHub commit telemetry, milestone progress bars, and upcoming feature roadmap.
   * Eye-catching glowing navigation pill button in the header for instant navigation.
 
@@ -83,7 +86,7 @@ I specialize in building end-to-end digital experiences where high-speed fronten
   * **Local Express Companion (`server.js`)**: Built-in Node.js/Express server with Nodemailer SMTP integration and persistent logging in `data/messages.json` for local development.
 
 * **🛰️ Telemetry Dock & Sidebar**:
-  * Floating desktop dock and mobile sliding drawer with quick section jumps and live status telemetry.
+  * Floating desktop dock, top scroll progress bar, and mobile sliding drawer with quick section jumps and live status telemetry.
 
 ---
 
@@ -93,6 +96,7 @@ I specialize in building end-to-end digital experiences where high-speed fronten
 | :--- | :--- |
 | **Frontend Core** | **React 19**, JSX, ES Modules |
 | **Build & Tooling** | **Vite 6**, React Plugin |
+| **Typography** | **Outfit**, **Inter**, **Plus Jakarta Sans**, **JetBrains Mono** |
 | **Styling & Effects** | Vanilla CSS3 Design Tokens, HTML5 Canvas 2D API |
 | **Icons & Assets** | **Lucide React**, Custom SVG brand logos |
 | **Backend & Email (Dev)** | **Node.js**, **Express 5**, **Nodemailer**, **CORS**, **Dotenv** |
@@ -107,36 +111,43 @@ I specialize in building end-to-end digital experiences where high-speed fronten
 portfolio/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml      # Automated GitHub Actions deployment pipeline
+│       └── deploy.yml            # Automated GitHub Actions deployment pipeline
 ├── data/
-│   └── messages.json       # Local inquiry records (git-ignored)
+│   └── messages.json             # Local inquiry records (git-ignored)
 ├── public/
-│   ├── CNAME               # Custom domain config (amaandev.me)
-│   └── images/             # Profile avatars, banners & logo assets
+│   ├── CNAME                     # Custom domain config (amaandev.me)
+│   └── images/                   # Profile avatars, banners & logo assets
 ├── src/
-│   ├── components/         # Modular React components
-│   │   ├── Contact.jsx     # Contact form with Web3Forms & local API
-│   │   ├── Experience.jsx  # Experience timeline
-│   │   ├── FloatingDock.jsx# Quick floating actions
-│   │   ├── Hero.jsx        # Hero section with role typewriter & bio
-│   │   ├── InstagramDpModal.jsx # Avatar modal preview
-│   │   ├── Navbar.jsx      # Sticky header with theme toggle & Ongoing button
-│   │   ├── Projects.jsx    # Project showcase cards
-│   │   ├── RightSidebarDock.jsx # Telemetry sidebar
-│   │   ├── SiteBackdrop.jsx# 60fps aurora canvas & parallax star-dot grid
-│   │   └── Skills.jsx      # Categorized skill chips
+│   ├── components/               # Modular React components
+│   │   ├── BrandIcons.jsx        # SVG brand logos & social vector icons
+│   │   ├── Contact.jsx           # Contact form with Web3Forms & local API
+│   │   ├── Experience.jsx        # Experience timeline & credentials
+│   │   ├── FloatingDock.jsx      # Quick floating navigation dock
+│   │   ├── Footer.jsx            # Modern footer with social hubs
+│   │   ├── GitHubProgressSidebar.jsx # GitHub telemetry & activity feed
+│   │   ├── HackerIntroOverlay.jsx# Cyberpunk CLI identity decryption overlay
+│   │   ├── Hero.jsx              # Hero section with role typewriter & bio
+│   │   ├── InstagramDpModal.jsx  # Avatar modal preview
+│   │   ├── Navbar.jsx            # Sticky header with theme toggle & Ongoing button
+│   │   ├── Projects.jsx          # Project showcase cards
+│   │   ├── RightSidebarDock.jsx  # Desktop slider dock & status telemetry
+│   │   ├── ScrollProgress.jsx    # Top viewport reading progress bar
+│   │   ├── SidebarDrawer.jsx     # Mobile slide-out navigation drawer
+│   │   ├── SiteBackdrop.jsx      # 60fps dynamic digital rain & aurora canvas
+│   │   └── Skills.jsx            # Categorized skill chips
 │   ├── data/
-│   │   └── portfolioData.js# Centralized portfolio content & metadata
+│   │   ├── githubData.js         # Real GitHub activity, repos & milestone stats
+│   │   └── portfolioData.js      # Centralized portfolio content & metadata
 │   ├── pages/
 │   │   └── OngoingProgressPage.jsx # Active sprint & roadmap dashboard
-│   ├── App.css             # Component styling & animations
-│   ├── App.jsx             # Main application orchestrator & client router
-│   ├── index.css           # Global design system & theme tokens
-│   └── main.jsx            # React root entry point
-├── server.js               # Express API for contact handling & SMTP
-├── vite.config.js          # Vite configuration with embedded dev API plugin
-├── package.json            # Scripts & project dependencies
-└── README.md               # Project documentation
+│   ├── App.css                   # Component styling & animations
+│   ├── App.jsx                   # Main application orchestrator & client router
+│   ├── index.css                 # Global design system & theme tokens
+│   └── main.jsx                  # React root entry point
+├── server.js                     # Express API for contact handling & SMTP
+├── vite.config.js                # Vite configuration with embedded dev API plugin
+├── package.json                  # Scripts & project dependencies
+└── README.md                     # Project documentation
 ```
 
 ---

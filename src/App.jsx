@@ -6,7 +6,6 @@ import SidebarDrawer from './components/SidebarDrawer';
 import FloatingDock from './components/FloatingDock';
 import ScrollProgress from './components/ScrollProgress';
 import SiteBackdrop from './components/SiteBackdrop';
-import MouseTracker from './components/MouseTracker';
 import Hero from './components/Hero';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
@@ -163,9 +162,6 @@ export default function App() {
 
       {/* Dynamic Animated Background with Dot Matrix & Spotlight */}
       <SiteBackdrop />
-
-      {/* Interactive Mouse Trailer / Cursor Tracker */}
-      <MouseTracker />
 
       {currentPage === 'ongoing' ? (
         /* ==================== DEDICATED ONGOING & GITHUB PROGRESS PAGE ==================== */
